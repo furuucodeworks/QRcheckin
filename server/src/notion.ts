@@ -1,5 +1,6 @@
 import { Client } from "@notionhq/client";
 
+// .envの登録されている環境変数を確認する
 function requireEnv(name: string): string {
   const v = process.env[name];
   if (!v) throw new Error(`${name} is missing`);
@@ -59,7 +60,7 @@ export async function createCheckInLog(params: {
           start: nowIso,
         },
       },
-      オプション利用: {
+      保険料利用: {
         checkbox: params.optionUsed,
       },
     },
