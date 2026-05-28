@@ -21,7 +21,7 @@ export default function App() {
   const [passInfo, setPassInfo] = useState<PassInfo | null>(null);
   const [optionUsed, setOptionUsed] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [countdown, setCountdown] = useState(3);
+  const [countdown, setCountdown] = useState(4);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -33,7 +33,7 @@ export default function App() {
     const video = videoRef.current;
     if (!video) return;
     navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: "environment" } })
+      .getUserMedia({ video: { facingMode: "user" } })
       .then((stream) => {
         video.srcObject = stream;
         video.play().catch(() => {});
@@ -85,13 +85,13 @@ export default function App() {
   // 完了後カウントダウン
   useEffect(() => {
     if (appState !== "success") return;
-    setCountdown(3);
+    setCountdown(4);
     const interval = setInterval(() => {
       setCountdown((c) => {
         if (c <= 1) {
           clearInterval(interval);
           setAppState("scanning");
-          return 3;
+          return 4;
         }
         return c - 1;
       });
@@ -213,7 +213,7 @@ export default function App() {
 
       {appState === "success" && (
         <div className="success">
-          <h2>✅ 登録完了</h2>
+          <h2>✅ チェックイン完了</h2>
           <p>{countdown}秒後にカメラに戻ります</p>
         </div>
       )}

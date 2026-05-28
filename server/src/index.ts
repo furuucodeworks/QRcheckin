@@ -189,7 +189,7 @@ app.get("/qr", (req, res) => {
 
   res.status(200).send(
     checkinPageHtml(`
-    <h1>チェックイン用 QR作成</h1>
+    <h1>YAMAZEN AICHI QUEST チェックイン用 QR作成</h1>
     <form method="GET" action="/qr">
       <p>
         <label for="pass_id">パスID</label><br />
